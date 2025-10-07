@@ -33,3 +33,6 @@ model PostCategory {
   category Category @relation(fields: [caregoryId], references: [id])
   @@id([postId, caregoryId])
 }
+generator client {
+  provider = "prisma-client-js"
+}
