@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User { 
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  password String
+  telephone String?
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  role Role @default(USER)
+}
+enum Role {
+  USER
+  ADMIN
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  categories PostCategory[]
+} 
+model Category {
+  id Int @id @default(autoincrement())
+  posts PostCategory[]
+}
+model PostCategory {
+  postId Int
+  caregoryId Int
+  post Post @relation(fields: [postId], references: [id])
+  category Category @relation(fields: [caregoryId], references: [id])
+  @@id([postId, caregoryId])
+}
