@@ -15,6 +15,15 @@ async function bootstrap() {
     .setDescription('API documentation for YAMM application')
     .setVersion('1.0')
     .addTag('YAMM')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',  
+      name: 'Authorization',
+      description: 'Enter JWT token',
+      in: 'header',   
+    }) // Habilitar autenticación Bearer
+    .addSecurityRequirements('Bearer') // Aplicar seguridad globalmente
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
