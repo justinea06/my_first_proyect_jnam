@@ -11,10 +11,10 @@ async function bootstrap() {
 
   // ✅ Configurar Swagger
   const config = new DocumentBuilder()
-    .setTitle('YAMM API')
-    .setDescription('API documentation for YAMM application')
+    .setTitle('my_first_proyect_jnam API')
+    .setDescription('API documentation for my_first_proyect_jnam application')
     .setVersion('1.0')
-    .addTag('YAMM')
+    .addTag('my_first_proyect_jnam')
     .addBearerAuth({
       type: 'http',
       scheme: 'bearer',
